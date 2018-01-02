@@ -1,0 +1,132 @@
+
+# Polimorfismo
+
+###### Definições ######
+
+* 1 - (SOBRECARGA) Ref: http://www.devmedia.com.br/sobrecarga-e-sobreposicao-de-metodos-em-orientacao-a-objetos/33066
+
+A sobrecarga de métodos (overload) é um conceito do polimorfismo que consiste basicamente em criar variações de um mesmo método, ou seja, a criação de dois ou mais métodos com nomes totalmente iguais em uma classe. 
+
+A Sobrecarga permite que utilizemos o mesmo nome em mais de um método contanto que suas listas de argumentos sejam diferentes para que seja feita a separação dos mesmos.
+
+------------------------
+
+* 2 - (SOBRESCRITA) Ref: http://www.devmedia.com.br/sobrecarga-e-sobreposicao-de-metodos-em-orientacao-a-objetos/33066
+
+A Sobreposição de métodos (override) é um conceito do polimorfismo que nos permite reescrever um método.
+
+Ou seja, podemos reescrever nas classes filhas métodos criados inicialmente na classe pai, os métodos que serão sobrepostos, diferentemente dos sobrecarregados, devem possuir o mesmo nome, tipo de retorno e quantidade de parâmetros do método inicial, porém o mesmo será implementado com especificações da classe atual, podendo adicionar um algo a mais ou não. 
+
+------------------------
+
+* 3 - (INCLUSÃO) Ref: https://informaticaemfoco.wordpress.com/2010/10/13/polimorfismo-seus-tipos/
+
+ Modela herança e subtipos. Permite a um objeto pertencer a várias classes simultaneamente, criando uma hierarquia de herança.
+
+Numa subclasse, um objeto pode ter um comportamento modificado com relação à classe original. Assim só ocorre em linguagens que permitem subtipo e herança. 
+
+Uma instância de uma subclasse pode ser manipulada pelas mesmas funções que manipulam instâncias da superclasse.
+
+------------------------
+
+* 4 - (PARAMÉTRICO) Ref: https://informaticaemfoco.wordpress.com/2010/10/13/polimorfismo-seus-tipos/
+
+Considerado o polimorfismo verdadeiro, um mesmo objeto pode ser utilizado como parâmetro em diferentes contextos sem necessidade de alterações. 
+
+Uma função que exibe polimorfismo paramétrico (também chamada de função genérica) permite que o tipo do seu argumento seja determinado por um parâmetro implícito ou explícito, executando uma mesma operação, independente do tipo de argumento.
+
+
+
+###### Exemplos ######
+
+* 1 - (SOBRECARGA) Ref: http://www.devmedia.com.br/sobrecarga-e-sobreposicao-de-metodos-em-orientacao-a-objetos/33066
+
+Criar um método chamado "calcula()" passando primeiramente dois números inteiros. Esse mesmo método é criado novamente porém com parametrização diferente, dessa vez aceitando duas Strings.
+
+Dessa forma, na hora de chamar o método "calcula()" podemos selecionar aquela que vai ser útil de acordo com os parâmetros que desejamos passar.
+
+------------------------
+
+* 2 - (SOBRESCRITA) Ref: http://www.devmedia.com.br/sobrecarga-e-sobreposicao-de-metodos-em-orientacao-a-objetos/33066
+
+Em uma classe chamada "Veiculo" o método "setVelocidade()" aplica valor ao atributo "velocidade". Uma nova classe "carro" utiliza o "extends" da classe "Veiculo" e sobrescreve o método "setVelocidade" atribuindo valor ao atributo velocidade e também ao atributo marcha, que é definido de acordo com regras da classe "carro";
+
+------------------------
+
+* 3 - (INCLUSÃO) Ref: http://www.itnerante.com.br/profiles/blogs/polimorfismo-universal-e-ad-hoc-cai-em-concurso-e-voc-n-o-sabia
+
+Uma classe abstrata principal é criada com o nome de "Animal" e implementa um método abstrato chamado "som()" que não possui retorno.
+
+Uma nova classe chamada "Gato" que extende de "Animal" implementa também um método sem retorno chamado "som()", porém inclui um system.out.prinln("miau");
+
+Outra classe chamada "Cachorro" que extende de "Animal" implementa também um método sem retorno chamado "som()", porém inclui um system.out.prinln("au au");
+
+Portanto ao criar os objetos do tipo "Gato" e "Cachorro" e chamar o método "som()", cada um exibirá a inclusão feita dentro do método da classe.
+
+------------------------
+
+* 4 - (PARAMÉTRICO) Ref: http://www2.ic.uff.br/~anselmo/cursos/TPA/apresentacoes/Polimorfismo.pdf
+
+Criar uma classe chamada Lista do tipo <T>, sendo assim: class Lista<T> { };
+
+Na utilização da classe, você escolhe o tipo que ela será, por exemplo: Lista<String> ls = new ArrayList<String>();   
+
+
+###### Ferramenta ######
+
+    1: Uso de acesso protegido, seja em métodos ou variáveis.
+
+    2: Uso de sobrescrita em métodos que podem ser reescritos alterando a forma original da classe extendida.
+
+    3: Uso de sobrecarga em métodos que podem ser reutilizados de forma diferente, aceitando até mesmo parâmetros diferentes.
+
+
+###### Inspeção / Classificação ######
+
+* 1 - Ref: https://github.com/maliaga/Polimorfismo/tree/master/src/com/itwall/polimorfismo
+
+    1: Utiliza variáveis de acesso protegido, primeiro requisito cumprido.
+
+    2: Utiliza sobrescrita de método principalmente no método "entrenamiento()", porém também usa no método "partidoFutbol()", portanto, segundo requisito cumprido.
+
+    3: Não utiliza sobrecarga de métodos.
+
+----------
+
+* 2 - Ref: https://github.com/victoralvess/PenaltyFever/tree/master/src/br/com/livr
+
+    1: Nesse repositório nenhuma classe utiliza método protegido. As classes podem ser melhores analisadas e com certeza algum método pode ser protegido, pois aplica várias vezes implementação e herança.
+
+    2: Utiliza várias vezes o conceito de sobrescrita de métodos, segundo requisito cumprido.
+
+    3: Não aplica nenhuma sobrecarga de métodos.
+
+----------
+
+* 3 - Ref: https://github.com/gabrielqn20/ExemploPolimorfismo/tree/master/Faculdade/src/pacotepadrao
+
+    1: Nesse repositório nenhuma classe utiliza método progetido nem variáveis protegidas. As variáveis private poderiam ser implementadas como protected, para que as classes filhas tenham acesso as informações também.
+
+    2: Utiliza a sobrescrita de método para o método "toString()", segundo requisito cumprido.
+
+    3: Não aplica nenhuma sobrecarga de métodos.
+
+----------
+
+* 4 - Ref: https://github.com/loiane/curso-java-basico/tree/master/netbeans/curso-java-basico/src/com/loiane/cursojava/aula41
+
+    1: Não utiliza métodos progetidos.
+
+    2: Utiliza sobrescrita para o método "imprimirEtiquetaEndereco()", portanto, segundo requisito cumprido.
+
+    3: Não aplica nenhuma sobrecarga de métodos.
+
+----------
+
+*5 - Ref: https://github.com/loiane/curso-java-basico/tree/master/netbeans/curso-java-basico/src/com/loiane/cursojava/aula46/labs
+
+    1: Não utiliza métodos progetidos.
+
+    2: Utiliza sobrescrita para vários métodos dentro das classes do repositório, portanto, segundo requisito cumprido.
+
+    3: Não aplica nenhuma sobrecarga de métodos.

@@ -1,0 +1,109 @@
+# Herança
+
+###### Definições ######
+
+* 1 - Ref: http://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544
+
+A herança é um princípio da POO que permite a criação de novas classes a partir de outras previamente criadas. 
+
+Essas novas classes são chamadas de subclasses, ou classes derivadas e as classes já existentes, que deram origem às subclasses, são chamadas de superclasses, ou classes base. 
+
+Deste modo é possível criar uma hierarquia dessas classes, tornando, assim, classes mais amplas e classes mais específicas. Uma subclasse herda métodos e atributos de sua superclasse. Apesar disso, pode escrevê-los novamente para uma forma mais específica de representar o comportamento do método herdado.
+
+----------
+
+* 2 - Ref: https://www.portaleducacao.com.br/conteudo/artigos/informatica/heranca-java/27188
+
+Herança, no modelo orientado a objetos, é uma das maneiras de se reaproveitar código semelhante, evitando assim, duplicação de código. 
+
+Uma vez definida uma classe, deve-se pensar em casos mais específicos dela, fazendo com que em seguida, uma nova classe seja gerada, mas que essa nova classe traga informações da original.
+
+Dessa forma, apenas as partes que forem realmente novas precisam ser escritas; todo o resto já foi implementado (e possivelmente testado) no caso anterior, com a classe chamada pai. 
+
+
+###### Exemplos ######
+
+* 1 - Ref: http://www.javaprogressivo.net/2012/10/Heranca-em-Javao-que-e--para-que-serve-exemplos--quando-usar.html
+
+Se for criar uma aplicação para um colégio, muito provavelmente você vai criar uma classe chamada "Aluno".
+Todo aluno tem seu nome, cursa uma série, tem seu número de matrícula etc.
+
+Mas um aluno do 2o grau tem matérias como Física, Biologia e Química, matérias que aluno do ensino fundamental não tem.
+
+A nossa classe mãe - ou superclasse - será a "Aluno", com dados e disciplinas QUE TODOS os alunos possuem em comum.
+
+Fazemos "fundamental" e "medio" herdarem as características da "Aluno", e dentro de cada subclasse (ou classe filha) dessas irá ter seus métodos e variáveis a mais.
+
+Ao herdar, automaticamente as subclasses irão possuir as mesmas variáveis e métodos.
+
+----------
+
+* 2 - Ref: http://www.inf.pucrs.br/flash/lapro2/lapro2_heranca.pdf
+
+Um retângulo é um quadrilátero.
+
+• Retângulo é um tipo específico de quadrilátero;
+
+• Quadrilátero é a superclasse, retângulo é a subclasse;
+
+• Não se pode dizer que um quadrilátero é um retângulo; 
+
+
+###### Ferramenta de verificação ######
+
+1: Verificar se é possível criar uma classe de herança para reutilização a partir de uma classe principal;
+
+2: Analisar se a classe dispõe de métodos abstratos para que possam ser sobrescritos em uma subclasse.
+
+3: Verificar o acesso protegido dos métodos e atributos para que o conceito de herança não seja perdido. Somente os métodos devem ser protected enquanto os atributos não.
+
+
+###### Inspeção / Classificação ######
+
+* 1 - Ref: https://github.com/loiane/curso-java-basico/blob/master/netbeans/curso-java-basico/src/com/loiane/cursojava/aula43/labs/exer02/Contribuinte.java
+
+    1: A superclasse "Contribuinte" implementa os atributos básicos para a criação de subclasses (Pessoa Física e Pessoa Jurídica), onde essas especificam suas próprias características específicas.
+
+    2: A superclasse possui um método abstrato chamado "calcularImposto". O método está sendo sobrescrito nas duas subclasses, aplicando corretamente o conceito de abstração em herança.
+
+    3: A classe está ok, não possui nenhum atributo protected que pode ser acessado por subclasses assim comprometendo o conceito de herança.
+
+----------
+
+* 2 - Ref: https://github.com/danielbrandao/Heranca_Java
+
+    1: Nesse repositório, a classe "Conta" é uma classe abstrata que permite a herança das outras classes do mesmo repositório, então está ok!
+
+    2: A classe principal, que é a classe "Conta", possui um método abstrato chamado "Debitar". Ou seja, esse mesmo método deve ser implementado nas outras classes que extendem da classe "Conta". Também pode ser criado outro método chamado "creditar" da mesma maneira, sendo um método abstrato, permitindo assim a implementação nas classes filhas.
+
+    3: Possui apenas atributos protected. Porém, como analisamos, está correto pois as classes filhas podem acessar e utilizar esses mesmos atributos.
+
+----------
+
+* 3 - Ref: https://github.com/loiane/JogoDaForca/blob/master/src/br/faesa/grupoestudos/forca/Jogo.java
+
+    1: Sim, a classe "Jogo" poderia ser uma classe abstrata. Depois poderia ser criada a classe "Forca" que extende dessa classe "Jogo" que é abstrata.
+
+    2: Assim como a análise acima, caso a classe "Jogo" fosse transformada em uma classe abstrata, alguns métodos poderiam ser implementados como abstratos também para obrigar a implementação dentro da classe "Forca" que seria gerada. Como por exemplo o método "preparaJogo()", que pode ser utilizado tanto nesse jogo da forca como em qualquer outro jogo que viria a extender da classe principal.
+
+    3: A classe está ok, não possui nenhum atributo protected que pode ser acessado por subclasses assim comprometendo o conceito de herança.
+
+----------
+
+* 4 - Ref: https://github.com/andersonluisribeiro/ExemploDeHerancaEmJava/tree/master/src
+
+    1: Nesse exemplo de herança, a classe principal "NotaFiscal" serve como modelo para as classes que herdam dela, portanto o item 1 do checklist está ok.
+
+    2: A classe "NotaFiscal" possui um método chamado "valorComJuros()", porém não está implementado como "abstract". Ele não está como abstract justamente porque possui uma implementação padrão, portanto as classes NotaFiscalPessoaFisica e NotaFiscalPessoaJuridica fazem o override aplicando a quantidade de juros para cada tipo de pessoa, enquanto a classe NotaFiscaPessoaEstranha não implementa esse método, fazendo assim com que a classe principal faça o cálculo padrão. Segundo item ok.
+
+    3: Não foram implementados métodos protegidos na classe principal pois não haveria necessidade. As variáveis que precisam ser privadas estão corretas, portanto o terceiro item está ok.
+
+----------
+
+* 5 - Ref: https://github.com/loiane/curso-java-basico/tree/master/netbeans/curso-java-basico/src/com/loiane/cursojava/aula43/labs/exer03
+
+    1: A superclasse "Animal" permite a criação de subclasses (Peixe e Mamifero), onde essas especificam suas próprias características específicas.
+
+    2: O único método sendo sobrescrito é o método "ToString". A superclasse poderia conter um método abstrato chamado "emitirSom", sendo assim, as subclasses seriam obrigadas a implementar esse método e especificar o som que o animal emite.
+
+    3: A classe está ok, não possui nenhum atributo protected que pode ser acessado por subclasses assim comprometendo o conceito de herança.
