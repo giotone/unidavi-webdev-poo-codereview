@@ -1,0 +1,94 @@
+# Encapsulamento
+
+###### Definições ######
+
+1 -Ref: http://www.devmedia.com.br/encapsulamento-em-java-primeiros-passos/31177
+
+É importante saber que o encapsulamento é diferente da ocultação de informações. A ocultação está embutida no processo de encapsular, porém, o encapsulamento pode ser definido como um mecanismo que visa restringir o acesso a alguns componentes do objeto, escondendo os dados de uma classe e tornando-os disponíveis somente através de métodos.
+
+Então o propósito é organizar os dados que sejam relacionados, agrupando-os em objetos (classes), reduzindo as colisões de nomes de variáveis (permitindo nomes de variáveis iguais sometne em namespaces distintos), e, da mesma forma, reunir métodos relacionados às suas propriedades (variáveis de classe).
+
+----------
+
+2 - Ref: https://pt.wikipedia.org/wiki/Encapsulamento
+
+Significa separar o programa em partes, o mais isoladas possível, a ideia é tornar o software mais flexível, fácil de modificar e de criar novas implementações.
+
+
+###### Exemplos ######
+
+1 - Ref: Autoral - métodos getters e setters, onde um atributo pode ser ocultado e acessado apenas através destes métodos.
+
+2 - Ref: Autoral - uma classe animal que contenha atributo nome, raça e idade e dois métodos chamados latir e miar pode ser dividida em uma classe principal chamada animal contendo os três atributos iniciais e duas outras classes chamadas cachorro e gato que tenham um atributo chamado animal que é criado a partir da classe animal e cada uma tem seu próprio método, uma possui o miar e a outra possui o latir.
+
+
+###### Ferramenta de verificação ######
+
+1 - Verificar a quantidade de métodos de uma classe. Se a quantidade for muito exagerada, analisar a possibilidade de separar esses métodos em classes diferentes.
+
+2 - Analisar os tamanhos dos métodos e a possiblidade de ser dividido em métodos privados ou até mesmo em classes diferentes.
+
+3 - Analisar os métodos privados e a possibilidade de transforma-los em classes diferentes para que o código fique o mais encapsulado possível, eliminando a quantidade excessiva de métodos privados em uma classe.
+
+4 - Ocultação da implementação: deixar visível para as outras classes somente o necessário, transformando assim métodos públicos em privados acessando-os através de getters e setters.
+
+
+###### Inspeção / Classificação ######
+
+1 - Ref: https://github.com/yanaga/ddd-javaee7/blob/master/src/main/java/me/yanaga/ddd/javaee7/domain/model/Invoice.java
+
+    1: Quantidade de métodos está ok.
+
+    2: Os tamanhos dos métodos estão ok.
+
+    3: A classe não possui métodos privados, porém implementa uma lista privada chamada "items". Portanto não haveria necessidade de transformar em outras classes.
+
+    4: Quanto à ocultação da implementação, está bem aplicada. A lista "items" é acessada através de um método public getItems e os outros métodos que serão utilizados estão bem distribuídos.
+
+----------
+
+2 - Ref: https://github.com/mateuscoelho2009/Encapsulamento/blob/master/src/Time.java
+
+    1: Quantidade de métodos está ok.
+
+    2: Os tamanhos dos métodos estão ok.
+
+    3: A classe possui um método privado chamado "clear". O método precisa ser interno porque mexe diretamente com as variáveis da classe principal.
+
+    4: Se outras classes utilizarem essa classe "Time" conseguiriam ver/aplicar somente o necessário de fato, então julgamos que a aplicação de ocultação está correta.
+
+----------
+
+3 - Ref: https://github.com/loiane/JogoDaForca/blob/master/src/br/faesa/grupoestudos/forca/Jogo.java
+
+    1: Quantidade de métodos está ok.
+
+    2: Os tamanhos dos métodos estão ok. 
+
+    3: Não ok. O método "temLetra" poderia ser transformado em uma classe diferente, pois implementa apenas a busca pela letra passada pelo parametro char "letra". Talvez seja necessário mexer no método "atualizaPalavra", porém ficaria mais organizado separando esse método "temLetra" e transformando em uma classe.
+
+    4: A ocultação de implementação está ok, foi deixado somente visível aquilo que é necessário.
+
+----------
+
+4 - Ref: https://github.com/loiane/curso-java-basico/blob/master/netbeans/curso-java-basico/src/com/loiane/cursojava/aula33/labs/ContaCorrente.java
+
+    1: Quantidade de métodos está ok.
+
+    2: Os tamanhos dos métodos estão ok. 
+
+    3: A classe não possui métodos privados, portanto não há necessidade da transformação em outras classes.
+
+    4: A ocultação de implementação está ok, está sendo utilizado os getters e setters para acesso aos atributos private.
+
+----------
+
+5 - Ref: https://github.com/Samuel-Oliveira/Java_NFe/blob/master/src/main/java/br/com/samuelweb/nfe/Evento.java
+
+    1: Quantidade de métodos está ok.
+
+    2: O método "evento" é relativamente grande. Analisando o código do mesmo, julgamos que poderia ser criado um novo método para fazer a parte da validação a fim de separar do restante do código e deixar o código mais limpo.
+
+    3: A classe só possui um método privado, portanto não haveria necessidade de separá-lo em uma outra classe.
+
+    4: Os métodos públicos da classe são utilizados de maneira externa. O único método que é utilizado exclusivamente de modo interno, está oculto através do private.
